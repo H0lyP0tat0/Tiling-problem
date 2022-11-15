@@ -15,18 +15,6 @@ int fib(int n) {
     return fib(n - 1) + fib(n - 2);
 }
 
-int count(int n, int m) {
-    return 100;
-}
-
-int countSame(int n) {
-    return 10;
-}
-
-int countEven(int n, int m) {
-    return 20;
-}
-
 int tiling(const vector<string>& a, const vector<string>& b, const vector<string>& c) {
     int a_dim, b_dim, c_dim, j, k, i;
     double result;
@@ -50,14 +38,13 @@ int tiling(const vector<string>& a, const vector<string>& b, const vector<string
             }
         // If a == b and a is even the result is reduced to this sequence https://oeis.org/A004003
         } else if (a_dim == b_dim && a_dim % 2 == 0) {
-            // [4 * cos(j * Pi / (2 * n + 1))^2 + 4 * cos(k * Pi / (2 * n + 1))^2] where j={1..n}, k={1..n}
+            // [4 * cos(j * Pi / (2 * n + 1))^2 + 4 * cos(k * Pi / (2 * n + 1))^2] where j={1..n}, k={1..n} and n=a_dim/2
 
-
-            // DOESNT WORK YET
-            for (j = 1; j <= a_dim; j++) {
-                for (k = 1; k <= a_dim; k++) {
+            int n = a_dim / 2;
+            for (j = 1; j <= n; j++) {
+                for (k = 1; k <= n; k++) {
                     // [4*cos(j*Pi/(2*n+1))^2 + 4*cos(k*Pi/(2*n+1))^2]
-                    result *= (4 * pow(cos((M_PI * j) / (2 * a_dim + 1)), 2) + 4 * pow(cos((M_PI * k) / (2 * a_dim + 1)), 2));
+                    result *= (4 * pow(cos((M_PI * j) / (2 * n + 1)), 2) + 4 * pow(cos((M_PI * k) / (2 * n + 1)), 2));
                 }
             }
         // Else we use the function by Temperley & Fisher (1961) and Kasteleyn (1961)
@@ -70,15 +57,6 @@ int tiling(const vector<string>& a, const vector<string>& b, const vector<string
             }
         }
 
-
-//        } else if (a_dim == b_dim) {
-//            result = countSame(a_dim);
-//        } else if (a_dim % 2 == 0 && b_dim % 2 == 0) {
-//            result = countEven(a_dim, b_dim);
-//        } else {
-//            result = count(a_dim, b_dim);
-//        }
-
         printSolution(a_dim, b_dim, c_dim, result);
     }
 
@@ -86,15 +64,9 @@ int tiling(const vector<string>& a, const vector<string>& b, const vector<string
 }
 
 int main() {
-    //int n = 2;
-    //cout << countWays(n);
-
     TextReader tr("in.txt");
     tr.loadFile();
 
-    //tr.printFile();
-
     tiling(tr.getA(), tr.getB(), tr.getC());
-
     return 0;
 }
