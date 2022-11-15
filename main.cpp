@@ -5,14 +5,14 @@
 using namespace std;
 
 /// @brief printSolution is a function that prints the final result with the dimensions of the room int console
-/// @params a, b, c, results are numbers that will be displayed
+/// @param a, b, c, results are numbers that will be displayed
 void printSolution(int a, int b, int c, int result) {
     cout << a << " x " << b << " - " << "expected result: " << c << " my result: " << result << endl;
 }
 
 // Fibonacci sequence https://oeis.org/A000045
 /// @brief fib is a function that returns the n-th fibonacci number
-/// @params n is the given number for the fibonacci sequence
+/// @param n is the given number for the fibonacci sequence
 int fib(int n) {
     if (n <= 1) {
         return n;
@@ -21,7 +21,7 @@ int fib(int n) {
 }
 
 /// @brief tiling is a function that calculates all the possible combinations for tile placement into a room
-/// @params a, b, c are the vectors used for the calculations
+/// @param a, b, c are the vectors used for the calculations
 void tiling(const vector<string>& a, const vector<string>& b, const vector<string>& c) {
     // declaring variables that I will use
     int a_dim, b_dim, c_num, i, j, k;
@@ -73,6 +73,7 @@ void tiling(const vector<string>& a, const vector<string>& b, const vector<strin
     }
 }
 
+// https://en.wikipedia.org/wiki/Domino_tiling
 /// @brief main cycle of the program
 int main() {
     // loading the txt file

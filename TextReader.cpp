@@ -5,7 +5,7 @@
 #include "TextReader.h"
 
 /// @brief Constructor for my TextReader class
-/// @params source is the name of the file thats being loaded
+/// @param source is the name of the file thats being loaded
 TextReader::TextReader(string source) {
     this->source = source;
     loadFile();
